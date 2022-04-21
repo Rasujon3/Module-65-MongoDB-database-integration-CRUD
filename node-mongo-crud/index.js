@@ -23,15 +23,14 @@ const client = new MongoClient(uri, {
 async function run() {
   try {
     await client.connect();
-    const userCollection = client.db("foodExpress").collection("users");
-    const user = { name: "Mohona Nodi", email: "nodi@gmail.com" };
-    const result = await userCollection.insertOne(user);
-    console.log(`User inserted with id: ${result.insertedId}`);
+    const userCollection = client.db(`foodExpress`).collection(`users`);
+    app.post("/user", (req, res) => {
+      res.send("");
+    });
   } finally {
     // await client.close();
   }
 }
-
 run().catch(console.dir);
 
 app.get("/", (req, res) => {
